@@ -6,37 +6,6 @@
                 "parameters": { "basic.simultaneous_threshold_milliseconds": 75 },
                 "rules": [
                     {
-                        "description": "Tap function key for standard function key and hold for OS",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f1",
-                                    "modifiers": { "optional": ["caps_lock"] }
-                                },
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 250,
-                                    "basic.to_if_held_down_threshold_milliseconds": 250
-                                },
-                                "to_if_alone": [{ "key_code": "f1" }],
-                                "to_if_held_down": [{ "consumer_key_code": "display_brightness_decrement" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f2",
-                                    "modifiers": { "optional": ["caps_lock"] }
-                                },
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 250,
-                                    "basic.to_if_held_down_threshold_milliseconds": 250
-                                },
-                                "to_if_alone": [{ "key_code": "f2" }],
-                                "to_if_held_down": [{ "consumer_key_code": "display_brightness_increment" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Tap right and left shift for Caps Word",
                         "manipulators": [
                             {
@@ -208,67 +177,12 @@
                         ]
                     },
                     {
-                        "description": "Double tap right Shift key to toggle caps lock",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "right_shift pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "caps_lock" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "right_shift pressed",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "key_code": "right_shift" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "right_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "right_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "CAPS_LOCK to Hyper or ESCAPE If Alone",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "caps_lock",
-                                    "modifiers": {}
+                                    "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
                                     {
