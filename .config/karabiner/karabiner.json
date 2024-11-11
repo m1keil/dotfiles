@@ -177,7 +177,7 @@
                         ]
                     },
                     {
-                        "description": "CAPS_LOCK to Hyper or ESCAPE If Alone",
+                        "description": "CAPS_LOCK to Meh or ESCAPE If Alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -186,9 +186,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_command",
+                                        "key_code": "left_shift",
                                         "lazy": true,
-                                        "modifiers": ["left_shift", "left_option", "left_control"]
+                                        "modifiers": ["left_option", "left_control"]
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "escape" }],
